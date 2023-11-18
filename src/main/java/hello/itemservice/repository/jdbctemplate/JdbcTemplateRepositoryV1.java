@@ -46,7 +46,7 @@ public class JdbcTemplateRepositoryV1 implements ItemRepository {
         long key = keyHolder.getKey().longValue();
         item.setId(key);
 
-        return null;
+        return item;
     }
 
     @Override
@@ -111,6 +111,6 @@ public class JdbcTemplateRepositoryV1 implements ItemRepository {
 
         log.info("sql={}", sql);
 
-        return template.query(sql, itemRowMapper());;
+        return template.query(sql, itemRowMapper(), param.toArray());
     }
 }
